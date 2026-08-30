@@ -1,0 +1,43 @@
+{
+  "name": "Memory",
+  "type": "object",
+  "properties": {
+    "memory_type": {
+      "type": "string",
+      "enum": [
+        "short_term",
+        "long_term",
+        "knowledge",
+        "project"
+      ],
+      "default": "long_term",
+      "description": "Category of stored memory"
+    },
+    "content": {
+      "type": "string",
+      "description": "The actual memory content text"
+    },
+    "source": {
+      "type": "string",
+      "default": "user",
+      "description": "Origin of this memory"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": [],
+      "description": "Searchable tags"
+    },
+    "importance": {
+      "type": "number",
+      "default": 0.5,
+      "description": "0-1 importance score"
+    }
+  },
+  "required": [
+    "memory_type",
+    "content"
+  ]
+}
