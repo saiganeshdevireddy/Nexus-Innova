@@ -1,0 +1,87 @@
+{
+  "name": "Task",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Short task title"
+    },
+    "goal": {
+      "type": "string",
+      "description": "Full goal / original request"
+    },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "in_progress",
+              "done"
+            ],
+            "default": "pending"
+          }
+        },
+        "required": [
+          "label",
+          "status"
+        ]
+      },
+      "default": [],
+      "description": "Ordered plan steps"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planning",
+        "in_progress",
+        "completed",
+        "paused"
+      ],
+      "default": "planning",
+      "description": "Overall task status"
+    },
+    "progress": {
+      "type": "number",
+      "default": 0,
+      "description": "0-100 percent complete"
+    },
+    "tools_used": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": [],
+      "description": "Tools/agents used"
+    },
+    "results": {
+      "type": "string",
+      "default": "",
+      "description": "Final results summary"
+    },
+    "verification_state": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "verified",
+        "failed"
+      ],
+      "default": "pending"
+    },
+    "mode": {
+      "type": "string",
+      "default": "chat",
+      "description": "Agent mode that created this task"
+    }
+  },
+  "required": [
+    "title",
+    "goal"
+  ]
+}
